@@ -4,12 +4,31 @@ Description
 This repository contains the cookbook to build mongodb virtual machine on
 virtual vox using ``vagrant`` and ``ansible``.
 
-Usage
-======
+Installation
+=============
 
-To run the virtual machine, execute :
+First clone this repository :
 
+    git clone https://github.com/Esme-Sudria-Database/Vagrant-Mongodb.git
+
+Then run the virtual machine, execute :
+
+    cd Vagrant-Mongodb
     vagrant up
+
+Using rockmongo
+===============
+
+Once the virtual machine provisioning done, use your browser to go on :
+
+    http://192.168.33.10
+
+The UserName:password to use is ``admin``:``admin``.
+
+![Rockmongo login](https://cloud.githubusercontent.com/assets/159559/10564184/469ed9c6-75aa-11e5-998a-d9bbd6e20200.png)
+
+Vagrant usage
+==============
 
 To connect on the virtual machine with ssh, execute :
 
@@ -44,6 +63,7 @@ Resources
 =========
 
 * [Mongodb](https://www.mongodb.org/)
+* [Rockmongo](http://rockmongo.com/)
 * [Virtual box](https://www.virtualbox.org/)
 * [Vagrant](https://www.vagrantup.com/)
 * [Ansible](http://www.ansible.com/)

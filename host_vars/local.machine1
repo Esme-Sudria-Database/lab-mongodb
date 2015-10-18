@@ -1,0 +1,4 @@
+---
+ansible_connection: local
+
+mongodb_bindip: 127.0.0.1 # ask mongodb server to listen request from this eth

@@ -1,0 +1,48 @@
+---
+- hosts: all
+  sudo: no
+  vars:
+    rockmongo_name: rockmongo-1.1.7
+  tasks:
+
+  - name: Apache | Ensure package is installed
+    apt: name=apache2
+
+  - name: Php | Ensure package is installed
+    apt: name={{ item }}
+    with_items:
+    - php5
+    - libapache2-mod-php5
+    - php5-mongo
+    notify:
+    - Apache | Ensure service is reloaded
+
+  - name: Rockmongo | Ensure utilities and dependency are installed
+    apt: name={{ item }}
+    with_items:
+    - unzip
+    notify:
+    - Apache | Ensure service is reloaded
+
+  - name: Rockmongo | Ensure archive is downloaded
+    get_url: url=http://rockmongo.com/downloads/go?id=14 dest=/tmp/{{ rockmongo_name }}.zip mode=0550
+    register: geturl_rockmongo
+
+  - name: Rockmongo | Ensure rockmongo archive is unpacked
+    unarchive: src=/tmp/{{ rockmongo_name }}.zip dest=/tmp copy=no
+    when: geturl_rockmongo.changed
+
+  - name: Rockmongo | Ensure website is deployed
+    copy: src=/tmp/{{ rockmongo_name }}/ dest=/var/www/html/
+
+  - name: Apache | Ensure default index.html is removed
+    file: path=/var/www/html/index.html state=absent
+
+  - name: Apache | Ensure service is started
+    service: name=apache2 state=started
+
+  roles:
+
+  handlers:
+  - name: Apache | Ensure service is reloaded
+    service: name=apache2 state=reloaded

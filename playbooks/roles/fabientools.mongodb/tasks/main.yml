@@ -1,0 +1,27 @@
+---
+- name: ensure mongodb unofficial repository apt key is present
+  apt_key:
+    keyserver: hkp://keyserver.ubuntu.com:80
+    id: EA312927
+
+- name: ensure mongodb repository is present
+  apt_repository:
+    repo: 'deb http://repo.mongodb.org/apt/ubuntu trusty/mongodb-org/3.2 multiverse'
+    state: present
+    update_cache: yes
+
+- name: ensure mongodb is installed
+  apt:
+    name: mongodb-org
+
+- name: ensure mongodb is listen traffic from all network interface
+  lineinfile:
+    backrefs: yes
+    dest: /etc/mongod.conf
+    regexp: "^(.*)bindIp: .*$"
+    line: '\1bindIp: {{ mongodb_bindip }}'
+    state: present
+  notify: ensure mongodb service is reloaded
+
+- name: ensure mongodb service is started
+  service: name=mongod state=started

@@ -9,23 +9,14 @@ Installation
 
 First clone this repository :
 
-    git clone https://github.com/Esme-Sudria-Database/Vagrant-Mongodb.git
+    git clone https://github.com/Esme-Sudria-Database/vagrant-mongodb.git
 
 Then run the virtual machine, execute :
 
-    cd Vagrant-Mongodb
+    cd vagrant-mongodb
     vagrant up
 
-Using rockmongo
-===============
-
-Once the virtual machine provisioning done, use your browser to go on :
-
-    http://192.168.33.10
-
-The UserName:password to use is ``admin``:``admin``.
-
-![Rockmongo login](https://cloud.githubusercontent.com/assets/159559/10564184/469ed9c6-75aa-11e5-998a-d9bbd6e20200.png)
+You can use [robomongo](https://robomongo.org/) to connect and use the database
 
 Vagrant usage
 ==============
@@ -50,19 +41,11 @@ To remove the virtual machine from your disk, execute :
 
     vagrant destroy
 
-Check playbook
-==============
-
-    make tests
-
-If it doesn't work due to missing ``ansible`` or ``ansible-galaxy roles``, use :
-
-    bash scripts/bootstrap-tests.sh
-
 Resources
 =========
 
 * [Mongodb](https://www.mongodb.org/)
+* [Robomongo](https://robomongo.org)
 * [Rockmongo](http://rockmongo.com/)
 * [Virtual box](https://www.virtualbox.org/)
 * [Vagrant](https://www.vagrantup.com/)

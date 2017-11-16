@@ -17,6 +17,8 @@ Vagrant.configure(2) do |config|
     apt-get install -y libffi-dev
     apt-get install -y libssl-dev
 
+    pip install --upgrade setuptools
+    pip install cffi
     pip install markupsafe
     pip install ansible
 

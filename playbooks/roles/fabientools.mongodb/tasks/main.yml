@@ -23,5 +23,13 @@
     state: present
   notify: ensure mongodb service is reloaded
 
+- name: ensure mongodb service is deployed
+  copy:
+    src: mongod.service
+    dest: /etc/systemd/system/mongod.service
+    owner: root
+    group: root
+    mode: 0644
+
 - name: ensure mongodb service is started
   service: name=mongod state=started

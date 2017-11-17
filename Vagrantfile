@@ -2,9 +2,10 @@
 # vi: set ft=ruby :
 
 Vagrant.configure(2) do |config|
-  config.vm.box = "ubuntu/trusty64"
+  config.vm.box = "bento/ubuntu-16.04"
 
   config.vm.network "forwarded_port", guest: 27017, host: 27017
+  config.vm.network "private_network", ip: "192.168.33.11"
 
   config.vm.provision "shell", inline: <<-SCRIPT
     mkdir -p /home/vagrant/ansible-local

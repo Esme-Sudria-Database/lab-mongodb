@@ -1,2 +1,2 @@
 ---
-- include: playbooks/mongodb.yml
+- import_playbook: playbooks/mongodb.yml

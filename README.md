@@ -18,6 +18,10 @@ Then run the virtual machine, execute :
 
 You can use [robomongo](https://robomongo.org/) to connect and use the database
 
+```
+dsn: 192.168.33.11:27017
+```
+
 Vagrant usage
 ==============
 
@@ -41,23 +45,23 @@ To remove the virtual machine from your disk, execute :
 
     vagrant destroy
 
-Dataset 
+Dataset
 =======
 The Data Sources used to build the dataset "cities15000.json" comes from http://www.geonames.org/data-sources.html. This work is licensed under a Creative Commons Attribution 3.0 License, see http://creativecommons.org/licenses/by/3.0/
 
-To comply with the license terms, the dataset "cities15000.json" is also under a Creative Commons Attribution 3.0 License. 
+To comply with the license terms, the dataset "cities15000.json" is also under a Creative Commons Attribution 3.0 License.
 
 The main 'cities' collection has the following keys:
 
 Key | description
 ------------------|------------------
 geonameid         | number, id of record in geonames database
-name              | string, name of geographical point  
-asciiname         | string, name of geographical point 
+name              | string, name of geographical point
+asciiname         | string, name of geographical point
 alternatenames    | array, alternate names of the city
-coordinates       | array, longitude in decimal degrees (wgs84), latitude in decimal degrees (wgs84), elevation in meters (integer, optionnal) 
+coordinates       | array, longitude in decimal degrees (wgs84), latitude in decimal degrees (wgs84), elevation in meters (integer, optionnal)
 feature class     | string, see http://www.geonames.org/export/codes.html
-feature code      | string, see http://www.geonames.org/export/codes.html 
+feature code      | string, see http://www.geonames.org/export/codes.html
 country code      | string, ISO-3166 2-letter country code, 2 characters
 cc2               | string, alternate country codes ISO-3166 2-letter country code
 admin1 code       | string, fipscode (subject to change to iso code), see exceptions below

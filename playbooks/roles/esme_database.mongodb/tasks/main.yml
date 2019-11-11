@@ -1,0 +1,45 @@
+---
+
+- name: ensure supervisord is installed
+  apt:
+    name: supervisor
+
+- name: ensure /opt/mongodb directory exists
+  file:
+    path: /opt/mongodb
+    state: directory
+
+- name: ensure docker image definition is present on host
+  copy:
+    src: files/mongodb/Dockerfile
+    dest: /opt/mongodb/Dockerfile
+    force: true
+
+- name: ensure docker image is build
+  docker_image:
+    build:
+      path: /opt/mongodb
+      pull: yes
+    name: mongodb
+    source: build
+
+- name: ensure service configuration is setup
+  template:
+    src: templates/mongodb.conf.j2
+    dest: "/etc/supervisor/conf.d/{{ esme_database_mongodb_container_name }}.conf"
+    owner: root
+    group: root
+  register: esme_database_mongodb_service_configuration
+
+- name: ensure supervisord service configuration is reloaded
+  command: supervisorctl reload
+  when: esme_database_mongodb_service_configuration.changed
+
+- name: pause after reloading supervisorctl
+  pause:
+    seconds: 5
+
+- name: ensure mongodb service is started
+  supervisorctl:
+    name: "{{ esme_database_mongodb_container_name }}"
+    state: started

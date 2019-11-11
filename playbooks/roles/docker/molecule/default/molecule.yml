@@ -12,6 +12,8 @@ provisioner:
   name: ansible
   lint:
     name: ansible-lint
+    options:
+      x: ["303", "503", "701", "703"]
   inventory:
     group_vars:
       all:

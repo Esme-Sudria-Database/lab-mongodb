@@ -1,6 +1,6 @@
 [program:{{ esme_database_mongodb_container_name }}]
 process_name={{ esme_database_mongodb_container_name }}
-command=docker run --name={{ esme_database_mongodb_container_name }} -e MONGO_INITDB_ROOT_USERNAME={{ esme_database_mongodb_default_user }} -e MONGO_INITDB_ROOT_PASSWORD={{ esme_database_mongodb_default_password }} --rm -v /data/db -p 27017 --net=docker esme_mongodb
+command=docker run --name={{ esme_database_mongodb_container_name }} -e MONGO_INITDB_ROOT_USERNAME={{ esme_database_mongodb_default_user }} -e MONGO_INITDB_ROOT_PASSWORD={{ esme_database_mongodb_default_password }} --rm -v /data/db -p 27017:27017 --net=docker esme_mongodb
 directory=/var/run
 user=root
 autostart=true

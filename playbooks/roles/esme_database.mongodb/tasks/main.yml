@@ -20,7 +20,7 @@
     build:
       path: /opt/mongodb
       pull: yes
-    name: mongodb
+    name: esme_mongodb
     source: build
 
 - name: ensure service configuration is setup

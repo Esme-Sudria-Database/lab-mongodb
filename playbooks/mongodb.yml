@@ -1,8 +1,0 @@
----
-- hosts: mongodb
-  become: yes
-  vars:
-  tasks:
-
-  roles:
-    - fabientools.mongodb

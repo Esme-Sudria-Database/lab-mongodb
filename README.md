@@ -1,8 +1,10 @@
-Description
-============
+Lab Mongodb
+===========
+
+[![Build Status](https://travis-ci.org/Esme-Sudria-Database/lab-mongodb.svg?branch=master)](https://travis-ci.org/Esme-Sudria-Database/lab-mongodb)
 
 This repository contains the cookbook to build mongodb virtual machine on
-virtual vox using ``vagrant`` and ``ansible``.
+virtual box to run lab.
 
 Installation
 =============

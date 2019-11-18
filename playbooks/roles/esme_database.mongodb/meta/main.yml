@@ -2,6 +2,3 @@
 galaxy_info:
   author: your name
   description: your description
-
-dependencies:
-  - docker

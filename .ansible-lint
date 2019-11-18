@@ -3,6 +3,7 @@ quiet: true
 use_default_rules: true
 verbosity: 0
 skip_list:
+  - '301'
   - '305'
   - '701'
   - '703'

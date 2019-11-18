@@ -43,3 +43,31 @@
   supervisorctl:
     name: "{{ esme_database_mongodb_container_name }}"
     state: started
+
+- name: ensure /opt/mongodb-import directory exists
+  file:
+    path: /opt/mongodb-import
+    state: directory
+
+- name: ensure docker image definition is present on host
+  copy:
+    src: files/mongodb-import/Dockerfile
+    dest: /opt/mongodb-import/Dockerfile
+    force: true
+
+- name: ensure the dataset is present on host
+  copy:
+    src: files/mongodb-import/cities15000.json
+    dest: /opt/mongodb-import/cities15000.json
+    force: true
+
+- name: ensure docker image is build
+  docker_image:
+    build:
+      path: /opt/mongodb-import
+      pull: yes
+    name: esme_mongodb_import
+    source: build
+
+- name: ensure the data are loaded
+  command: docker run --net=host esme_mongodb_import
